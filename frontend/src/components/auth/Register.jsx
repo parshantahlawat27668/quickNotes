@@ -37,11 +37,12 @@ const Register = () => {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center text-white">
-      <form className="border-[1px] rounded-xl p-6 flex flex-col w-90 bg-[#00000096] border-none" onSubmit={registerHandler}>
-        <h2 className='text-xl font-semibold mb-2'>Register</h2>
-        <hr className='mb-3' />
-        
-        <div className="flex flex-col mb-2 gap-[2px]">
+      <form className="border-[1px] rounded-xl p-6 flex flex-col w-90 bg-[#00000096] border-none items-center " onSubmit={registerHandler}>
+        <div className='w-full'>
+        <h2 className='text-xl font-semibold mb-1'>Register</h2>
+        </div>
+        <hr className='mb-3 w-full' />
+        <div className="flex flex-col mb-2 gap-[2px] w-full">
           <label htmlFor="name" className='text-sm'>Name</label>
           <input
             className='bg-white rounded-[5px] p-1 outline-none text-black'
@@ -51,7 +52,7 @@ const Register = () => {
 
         {
           registerWith === "phone" ? (
-            <div className="flex flex-col mb-2 gap-[2px]">
+            <div className="flex flex-col mb-2 gap-[2px] w-full">
               <label htmlFor='phone'>Phone</label>
               <input
                 className='bg-white rounded-[5px] p-1 outline-none text-black'
@@ -60,18 +61,18 @@ const Register = () => {
               <p className="text-[11px] text-yellow-600 cursor-pointer" onClick={toggleRegisterWith}>Register with email</p>
             </div>
           ) : (
-            <div className="flex flex-col mb-2 gap-[2px]">
+            <div className="flex flex-col mb-2 gap-[2px] w-full">
               <label htmlFor='email'>Email</label>
               <input
                 className='bg-white rounded-[5px] p-1 outline-none text-black'
                 required type='email' id='email' name='email' placeholder='Enter your email id'
               />
-              <p className="text-[11px] text-yellow-600 cursor-pointer" onClick={toggleRegisterWith}>Register with phone</p>
+              <p className="text-[11px] text-yellow-600 cursor-pointer m-0 p-[0px]" onClick={toggleRegisterWith}>Register with phone</p>
             </div>
           )
         }
 
-        <div className="flex flex-col mb-2 gap-[2px]">
+        <div className="flex flex-col mb-2 gap-[2px] w-full">
           <label htmlFor='password'>Password</label>
           <input
             className='bg-white rounded-[5px] p-1 outline-none text-black'
@@ -79,9 +80,9 @@ const Register = () => {
           />
         </div>
 
-        <button type='submit' className="w-auto bg-blue-400 font-medium p-[2px] rounded-[5px] mt-2 mb-2">Register</button>
+        <button type='submit' className=" bg-blue-400 font-medium py-1 rounded-[5px] mt-5  w-full">Register</button>
 
-        <p className='text-[12px] '>Already have an account? <Link to="/auth/login" className='text-blue-400' >login</Link></p>
+        <p className='text-[12px] mt-1'>Already have an account? <Link to="/auth/login" className='text-blue-400' >login</Link></p>
 
         <p className='text-center mb-3 mt-2 text-md'>or</p>
 
