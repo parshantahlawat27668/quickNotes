@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const Header = () => {
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    axios.get("http://localhost:5000/api/v1/auth/logout", { withCredentials: true })
+    axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/logout`, { withCredentials: true })
       .then((response) => {
         dispatch(setUser(null));
         toast.success(response.data.message);

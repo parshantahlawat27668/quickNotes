@@ -22,7 +22,7 @@ const NoteCard = ({ note, onClick }) => {
   const formatted = `${day} ${month} ${year} ${hours}:${minutes} ${ampm}`;
 
   const handleDelete = (noteId)=>{
-    axios.delete(`http://localhost:5000/api/v1/note/delete/${noteId}`,{withCredentials:true})
+    axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/v1/note/delete/${noteId}`,{withCredentials:true})
     .then((response)=>{
       dispatch(setNotes(response.data.data.notes));
       toast.success(response.data.message);

@@ -19,7 +19,7 @@ const CreateNote = ({notes}) => {
         e.preventDefault();
         const title = titleRef.current.value;
         const note = noteRef.current.value;
-        axios.post("http://localhost:5000/api/v1/note/create",{title, note},{withCredentials:true})
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/note/create`,{title, note},{withCredentials:true})
         .then((response)=>{
           dispatch(setNotes(response.data.data.notes));
           toast.success(response.data.message);

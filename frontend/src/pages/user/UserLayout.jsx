@@ -11,7 +11,7 @@ const UserLayout = () => {
   const dispatch = useDispatch();
       useEffect(()=>{
     const fetchNotes = ()=>{
-      axios.get("http://localhost:5000/api/v1/note/my",{withCredentials:true})
+      axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/v1/note/my`,{withCredentials:true})
       .then((response)=>{
         dispatch(setNotes(response.data.data.notes));
       })

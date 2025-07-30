@@ -1,7 +1,6 @@
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import React, { useState } from 'react'
-import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { setUser } from '../../store/userSlice';
@@ -27,7 +26,7 @@ const Login = () => {
 
 
   const handleGoogleSuccess = (credentialResponse)=>{
-    axios.post("http://localhost:5000/api/v1/auth/login/google",{idToken:credentialResponse.credential},{withCredentials:true})
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/login/google`,{idToken:credentialResponse.credential},{withCredentials:true})
     .then((response)=>{
       dispatch(setUser(response.data.data.user));
       toast.success(response.data.message);

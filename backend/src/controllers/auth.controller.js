@@ -47,8 +47,8 @@ const login = asyncHandler(async (req, res) => {
 
     return res
         .status(200)
-        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 30 * 60 * 1000 })
-        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 })
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(200, {}, "User login successfully"))
 });
 
@@ -72,8 +72,8 @@ const loginWithGoogle = asyncHandler(async (req, res) => {
     const responseUser = sanitizeUser(user);
     return res
         .status(200)
-        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 30 * 60 * 1000 })
-        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 })
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(200, {user:responseUser}, "User login successfully"))
 });
 
@@ -90,8 +90,8 @@ const logout = asyncHandler(async (req, res) => {
     );
     return res
         .status(200)
-        .clearCookie("accessToken", { httpOnly: true, secure: true, sameSite: "lax" })
-        .clearCookie("refreshToken", { httpOnly: true, secure: true, sameSite: "lax" })
+        .clearCookie("accessToken", { httpOnly: true, secure: true, sameSite: "none" })
+        .clearCookie("refreshToken", { httpOnly: true, secure: true, sameSite: "none" })
         .json(new apiResponse(200, {}, "User logout successfully"))
 });
 
@@ -226,8 +226,8 @@ const verifyPhone = asyncHandler(async (req, res) => {
     const { accessToken, refreshToken } = tokenGenerator(user);
     return res
         .status(200)
-        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 30 * 60 * 1000 })
-        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 })
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(200, {}, "Phone no. verified successfully"));
 });
 
@@ -259,8 +259,8 @@ const verifyEmail = asyncHandler(async (req, res) => {
     const { accessToken, refreshToken } = tokenGenerator(user);
     return res
         .status(200)
-        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 30 * 60 * 1000 })
-        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 })
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(200, {}, "Email id verified successfully"));
 });
 
@@ -292,8 +292,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
     return res
         .status(200)
-        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 30 * 60 * 1000 })
-        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "lax", maxAge: 7 * 24 * 60 * 60 * 1000 })
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(200, {}, "Tokens refreshed successfully"));
 });
 
