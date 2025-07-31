@@ -160,6 +160,8 @@ const register = asyncHandler(async (req, res) => {
 
     return res
         .status(201)
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(201, {}, `Verification code sent successfully`))
 
 });
@@ -195,6 +197,8 @@ const registerWithGoogle = asyncHandler(async (req, res) => {
     const responseUser = sanitizeUser(user);
     return res
         .status(201)
+        .cookie("accessToken", accessToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 30 * 60 * 1000 })
+        .cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "none", maxAge: 7 * 24 * 60 * 60 * 1000 })
         .json(new apiResponse(201, {user:responseUser}, 'User register successfully'))
 });
 

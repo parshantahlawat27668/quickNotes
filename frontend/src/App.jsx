@@ -1,5 +1,5 @@
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css'
 import Login from './components/auth/Login.jsx';
 import Register from './components/auth/Register.jsx';
@@ -17,7 +17,7 @@ import { setUser } from './store/userSlice.js';
 
 function App() {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
       useEffect(()=>{
     const fetchUser = ()=>{
@@ -26,7 +26,9 @@ function App() {
         dispatch(setUser(response.data.data.user));
       })
       .catch((error)=>{
+        navigate("/auth/login",{replace:true});
         console.log(error);
+
       })
     }
     fetchUser();
