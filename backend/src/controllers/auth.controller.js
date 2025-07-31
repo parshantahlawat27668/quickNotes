@@ -192,8 +192,10 @@ const registerWithGoogle = asyncHandler(async (req, res) => {
     userData.email = emailData;
     userData.name = payload.name;
     userData.googleId = payload.sub;
-
     const user = await User.create(userData);
+
+    const {accessToken, refreshToken} = await  tokenGenerator(user);
+
     const responseUser = sanitizeUser(user);
     return res
         .status(201)
